@@ -41,24 +41,24 @@ test,xtest,ytest=scale_dataset(test,oversample=False)
 
 
 #creating linear regression model
-linear_model=LinearRegression()
+Bayes_model=BayesianRidge()
 
 #training the linear model
-linear_model=linear_model.fit(xtrain,ytrain)
+Bayes_model=Bayes_model.fit(xtrain,ytrain)
 
 
-y_pred=linear_model.predict(xvalid)
+y_pred=Bayes_model.predict(xvalid)
 
 score=r2_score(yvalid,y_pred)
 
-ytestpred=linear_model.predict(xtest)
+ytestpred=Bayes_model.predict(xtest)
 
 test_score=r2_score(ytest,ytestpred)
 
 #pickling data into the pickle
 file='pickltest.pkl'
 file_obj=open(file,'wb')
-pkl.dump(linear_model,file_obj)
+pkl.dump(Bayes_model,file_obj)
 file_obj.close()
 
 
